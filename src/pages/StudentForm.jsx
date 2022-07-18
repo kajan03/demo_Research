@@ -154,7 +154,7 @@ const StudentForm = () => {
 														<TextField
 															{...field}
 															variant="outlined"
-															label="Matrix"
+															label="Grade"
 															fullWidth
 														/>
 													)}
@@ -173,7 +173,7 @@ const StudentForm = () => {
 														<TextField
 															{...field}
 															variant="outlined"
-															label="Statistics"
+															label="Subject"
 															fullWidth
 														/>
 													)}
@@ -192,7 +192,7 @@ const StudentForm = () => {
 														<TextField
 															{...field}
 															variant="outlined"
-															label="Calculus"
+															label="Section"
 															fullWidth
 														/>
 													)}
@@ -211,7 +211,7 @@ const StudentForm = () => {
 														<TextField
 															{...field}
 															variant="outlined"
-															label="Regression"
+															label="Marks"
 															fullWidth
 														/>
 													)}

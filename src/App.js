@@ -1,18 +1,19 @@
 import './App.css';
-import StudentForm from './pages/StudentForm';
-import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
+import Router from './routes';
+// theme
+import ThemeProvider from './theme';
+// components
+import ScrollToTop from './components/ScrollToTop';
+import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 
+// ----------------------------------------------------------------------
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Router>
-        <Routes>
-        <Route path="/" element={<StudentForm />}></Route>
-       </Routes>
-      </Router>
-    </div>
+    <ThemeProvider>
+      <ScrollToTop />
+      <BaseOptionChartStyle />
+      <Router />
+    </ThemeProvider>
   );
 }
-
-export default App;
