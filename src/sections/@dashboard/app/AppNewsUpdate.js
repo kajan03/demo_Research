@@ -67,9 +67,9 @@ function NewsItem({ news }) {
         </Typography>
       </Box>
 
-      <Typography variant="caption" sx={{ pr: 3, flexShrink: 0, color: 'text.secondary' }}>
-        {fToNow(postedAt)}
-      </Typography>
+      <Button variant='outlined'style={{borderColor:"#62A9FF",marginRight:"20px"}} sx={{ color: 'secondary.main',p: 1, pr: 1 }}>
+        Take Quiz
+      </Button>
     </Stack>
   );
 }

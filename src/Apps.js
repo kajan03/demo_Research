@@ -1,5 +1,5 @@
 import './App.css';
-import Routes from './routes';
+import Routee from './route';
 // theme
 import ThemeProvider from './theme';
 // components
@@ -8,12 +8,12 @@ import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 
 // ----------------------------------------------------------------------
 
-export default function App() {
+export default function Apps() {
   return (
     <ThemeProvider>
       <ScrollToTop />
       <BaseOptionChartStyle />
-      <Routes />
+      <Routee />
     </ThemeProvider>
   );
 }
