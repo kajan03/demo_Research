@@ -19,12 +19,15 @@ import axios from "axios";
 const Result = ({ questions, createMarkup, reset,time }) => {
 	const navigate = useNavigate();
     const [score, setScore] = useState(0);
+    const [result,setResult] = useState([]);
 
     useEffect(() => {
       if (questions.length > 0) {
         setScore(
           questions.filter((q) => q.userAnswer === q.answer).length * 10
         );
+        
+        
       }
       // eslint-disable-next-line
     }, []);

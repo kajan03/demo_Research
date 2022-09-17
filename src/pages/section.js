@@ -106,7 +106,7 @@ const QuizSection = () => {
 											className="inputText"
 											variant="outlined"
 										>
-											<MenuItem value="trignonmetry">Trignometry</MenuItem>
+											<MenuItem value="7">7</MenuItem>
 											<MenuItem value="IT">IT</MenuItem>
 										</TextField>
 									</Grid>

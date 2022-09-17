@@ -27,6 +27,7 @@ const QuestionsTest = ({ history }) => {
   const [result, setResult] = useState(false);
   const [seconds,setSeconds] = useState(0);
   const [minutes,setMinutes] = useState(0);
+  const [answers,setAnswers] = useState([]);
 
   var timer;
   useEffect(() => {
@@ -53,21 +54,21 @@ const QuestionsTest = ({ history }) => {
   const fetchQuizData = async () => {
     setLoading(true);
     try {
-      const url = `http://localhost:5000/api/sections/${
+      const url = `http://localhost:5000/api/quiz/${
        cat
       }`;
       const { data } = await axios.get(url);
-      console.log(data[0]);
-      setQuestions(data);
+      // console.log(data.Quiz_Questions);
+      setQuestions(data.Quiz_Questions);
       setAllAnswers(
         [
-          data[0].option1,
-          data[0].option2,
-          data[0].option3,
-          data[0].option4,
+          data.Quiz_Questions[0].option1,
+          data.Quiz_Questions[0].option2,
+          data.Quiz_Questions[0].option3,
+          data.Quiz_Questions[0].option4,
         ].sort(() => Math.random() - 0.5)
       );
-      console.log(allAnswers);
+      // console.log(allAnswers);
     } catch (error) {
       console.log('Fetch quiz error =====>>>>', error);
     }
@@ -83,7 +84,16 @@ const QuestionsTest = ({ history }) => {
     if (!questions[curQuestionNo].userAnswer) {
       alert('Please select one answer !');
       return false;
+
+     
     }
+
+    setAnswers([...answers,{
+      question_id : questions[curQuestionNo].question_id,
+      response : questions[curQuestionNo].userAnswer
+    }])
+
+    console.log(answers);
 
     setAllAnswers(
       [
@@ -93,9 +103,11 @@ const QuestionsTest = ({ history }) => {
         questions[curQuestionNo + 1].option4,
       ].sort(() => Math.random() - 0.5)
     );
+    console.log(questions.answer)
 
     setCurQuestionNo(curQuestionNo + 1);
   };
+
   const showResult = () => {
     if (!questions[curQuestionNo].userAnswer) {
       alert('Please select one answer !');
@@ -103,6 +115,22 @@ const QuestionsTest = ({ history }) => {
     }
 
     setResult(true);
+    setAnswers([...answers,{
+      question_id : questions[curQuestionNo].question_id,
+      response : questions[curQuestionNo].userAnswer
+    }])
+    console.log(answers);
+
+    axios.post(`http://localhost:5000/api/attempt/${
+      cat
+     }`, {
+      quiz_answers: answers,
+      quizId: cat
+  }).then(res => {
+      if (res.data) {
+          console.log(res.data)
+      }
+  })
   };
 
   const reset = () => {
